@@ -101,7 +101,7 @@ sudo kubectl apply -f deployment.yaml -n namespace2
 
 source ~/.config/envman/PATH.env
 
-# k9s "Plugins not loaded"
+# last tweaks to PATH and KUBECONFIG
 export PATH="/root/.local/bin:$PATH"
 export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
 
