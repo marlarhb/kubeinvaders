@@ -104,6 +104,7 @@ source ~/.config/envman/PATH.env
 # last tweaks to PATH and KUBECONFIG
 export PATH="/root/.local/bin:$PATH"
 export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
+export KUBECONFIG=~/.kube/config
 
 echo '######################################'
 echo '######################################'
