@@ -33,7 +33,7 @@ helm repo update
 curl -sS https://webinstall.dev/k9s | bash
 rm -r Downloads/
 export PATH="/root/.local/bin:$PATH"
-export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
+export KUBECONFIG=~/.kube/config
 
 # Install k3s with Traefik disabled
 curl -sfL https://get.k3s.io | INSTALL_K3S_EXEC="--disable traefik" sh -s -
