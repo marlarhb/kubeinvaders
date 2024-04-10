@@ -1,12 +1,23 @@
 #Install k3s w/o traefik, install kubinvaders, example of scaling in ns1
 #pre: DNS entry for ingress to kubeinvaders.io
-# 
-
-sudo apt install curl
-INSTALL_K3S_VERSION=v1.28.5+k3s1 
-curl -sfL https://get.k3s.io | INSTALL_K3S_EXEC="server" sh -s - --disable-traefik
 
 #!/bin/bash
+
+# update your system
+sudo apt update
+sudo apt upgrade
+
+# install and check ssh server
+sudo apt install openssh-server
+sudo systemctl status ssh
+# if the firewall is active, you need to run this command to use ssh:
+sudo ufw allow ssh
+# check for the ip to connect to the ssh server
+ip a
+
+# install curl
+sudo apt install curl
+
 # install Helm
 curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | DESIRED_VERSION=v3.13.3 bash
 
@@ -106,10 +117,6 @@ sudo kubectl apply -f deployment.yaml -n namespace1
 sudo kubectl apply -f deployment.yaml -n namespace2
 
 source ~/.config/envman/PATH.env
-
-# last tweaks to PATH and KUBECONFIG
-export PATH="/root/.local/bin:$PATH"
-export KUBECONFIG=~/.kube/config
 
 echo '######################################'
 echo '######################################'
