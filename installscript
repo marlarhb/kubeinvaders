@@ -2,6 +2,10 @@
 #pre: DNS entry for ingress to kubeinvaders.io
 # 
 
+sudo apt install curl
+INSTALL_K3S_VERSION=v1.28.5+k3s1 
+curl -sfL https://get.k3s.io | INSTALL_K3S_EXEC="server" sh -s - --disable-traefik
+
 #!/bin/bash
 # install Helm
 curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | DESIRED_VERSION=v3.13.3 bash
@@ -16,7 +20,6 @@ helm repo update
 # install k9s
 curl -sS https://webinstall.dev/k9s | bash
 rm -r Downloads/
-
 export PATH="/root/.local/bin:$PATH"
 export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
 
