@@ -1,13 +1,15 @@
 #!/bin/bash
+
 #Install k3s w/o traefik, install kubinvaders, example of scaling in ns1
 #pre: DNS entry for ingress to kubeinvaders.io
 
 # update your system
+DEBIAN_FRONTEND=noninteractive
 sudo apt update
-sudo apt upgrade
+sudo apt upgrade -y
 
 # install and check ssh server
-sudo apt install openssh-server
+sudo apt install -y openssh-server
 sudo systemctl status ssh
 # if the firewall is active, you need to run this command to use ssh:
 sudo ufw allow ssh
@@ -15,7 +17,7 @@ sudo ufw allow ssh
 ip a
 
 # install curl
-sudo apt install curl
+sudo apt install -y curl
 
 # install Helm
 curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | DESIRED_VERSION=v3.13.3 bash
